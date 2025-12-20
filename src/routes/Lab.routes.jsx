@@ -3,6 +3,10 @@ import { lazy } from "react";
 const ListingProblem = lazy(() =>
   import("@/components/Labs/lab_01_big_lists/ListingProblem")
 );
+const ListingProblemSolution = lazy(() =>
+  import("@/components/Labs/lab_01_big_lists/ListingProblemSolution")
+);
+
 export const labRoutes = [
   {
     path: "/big-lists",
@@ -38,6 +42,6 @@ export const labRoutes = [
             ))}`,
     hocLayout: true,
     solution_Element: <ListingProblemSolution />,
-    solution_code:``
+    solution_code: ``,
   },
 ];
