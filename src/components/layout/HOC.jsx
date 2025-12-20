@@ -8,6 +8,7 @@ const RenderProfiler = ({ id, children, onMeasure }) => {
     actualDuration, // time spent rendering
     baseDuration // estimated without memoization
   ) => {
+    console.log({ id: _id, phase, actualDuration, baseDuration });
     onMeasure({
       phase,
       actualDuration: actualDuration.toFixed(1),
