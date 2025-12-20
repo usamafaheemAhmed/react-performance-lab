@@ -1,0 +1,1 @@
+import{a as o,j as i}from"./index-UFST_A2b.js";const s=()=>{const e=o.c(1);let t;return e[0]===Symbol.for("react.memo_cache_sentinel")?(t=i.jsx("div",{children:"ListingProblemSolution"}),e[0]=t):t=e[0],t};export{s as default};
