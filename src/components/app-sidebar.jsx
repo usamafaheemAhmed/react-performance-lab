@@ -194,19 +194,25 @@ export function AppSidebar({ ...props }) {
                 <NavLink to={"#"}>React Problems</NavLink>
               </SidebarMenuButton>
               <SidebarMenuSub>
-                {labRoutes.map((item) => (
-                  <SidebarMenuSubItem key={item.title}>
-                    <SidebarMenuSubButton
-                      asChild
-                      isActive={item.path === location.pathname}
-                      onClick={() => {
-                        console.log("clicked");
-                      }}
-                    >
-                      <NavLink to={item.path}>{item.title}</NavLink>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                ))}
+                {labRoutes.map((item) => {
+                  if (item.showInMenu === true) {
+                    return (
+                      <SidebarMenuSubItem key={item.title}>
+                        <SidebarMenuSubButton
+                          asChild
+                          isActive={item.path === location.pathname}
+                          onClick={() => {
+                            console.log("clicked");
+                          }}
+                        >
+                          <NavLink to={item.path}>{item.title}</NavLink>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
               </SidebarMenuSub>
             </SidebarMenuItem>
           </SidebarMenu>

@@ -1,3 +1,4 @@
+import HomePage from "@/components/Pages/HomePage";
 import { lazy } from "react";
 
 const ListingProblem = lazy(() =>
@@ -81,5 +82,11 @@ import { useVirtualizer } from "@tanstack/react-virtual";
     </div>
     `,
     solution_Element: <ListingProblemSolution />,
+  },
+  {
+    path: "/",
+    element: <HomePage />, // <-- FIXED
+    title: "Home",
+    showInMenu: false,
   },
 ];
