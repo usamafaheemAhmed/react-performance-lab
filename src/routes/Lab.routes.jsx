@@ -41,7 +41,45 @@ export const labRoutes = [
               </Item>
             ))}`,
     hocLayout: true,
+    solution_code: `
+import { useVirtualizer } from "@tanstack/react-virtual";
+
+      const parentRef = React.useRef(null);
+    
+      const rowVirtualizer = useVirtualizer({
+        count: userData.length,
+        getScrollElement: () => parentRef.current,
+        estimateSize: () => ROW_HEIGHT,
+        overscan: 8,
+        measureElement: (el) => el.getBoundingClientRect().height,
+      });
+    
+    <div ref={parentRef} className="h-[600px] overflow-auto">
+      <div
+        style={{
+          height: {rowVirtualizer.getTotalSize()}px,
+          position: "relative",
+        }}
+      >
+        {rowVirtualizer.getVirtualItems().map((virtualRow) => (
+          <div
+            key={virtualRow.key}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              transform: translateY({virtualRow.start}px),
+            }}
+          >
+            <div className="px-2 py-1">
+              <UserItem user={userData[virtualRow.index]} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    `,
     solution_Element: <ListingProblemSolution />,
-    solution_code: ``,
   },
 ];
