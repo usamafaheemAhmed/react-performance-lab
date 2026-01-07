@@ -62,7 +62,6 @@ const useRenderCount = () => {
   return count.current;
 };
 
-
 /* =========================
    UI Pieces
 ========================= */
@@ -160,20 +159,23 @@ const PerformancePane = React.memo(({ code, element, onMeasure }) => {
 const HOC = ({ item }) => {
   return (
     <div className="min-h-screen w-full px-4 pt-4">
-      <Tabs defaultValue="problem" className="w-full">
+      <Tabs defaultValue="solution" className="w-full">
         <TabsList>
-          <TabsTrigger value="problem">Problem</TabsTrigger>
           <TabsTrigger value="solution">Solution</TabsTrigger>
+          <TabsTrigger value="problem">Problem</TabsTrigger>
         </TabsList>
 
         <TabsContent value="problem" forceMount={false}>
-          <PerformancePane code={item.code} element={item.element} />
+          <PerformancePane
+            code={item.lab.problem.codeSnippet}
+            element={item.lab.problem.component}
+          />
         </TabsContent>
 
         <TabsContent value="solution" forceMount={false}>
           <PerformancePane
-            code={item.solution_code}
-            element={item.solution_Element}
+            code={item.lab.solution.codeSnippet}
+            element={item.lab.solution.component}
           />
         </TabsContent>
       </Tabs>

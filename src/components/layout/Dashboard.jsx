@@ -10,6 +10,9 @@ import { Route, Routes } from "react-router-dom";
 import { labRoutes } from "@/routes/Lab.routes";
 import LoadingFallback from "./LoadingFallback";
 import HOC from "./HOC";
+import { problemRoutes } from "@/routes/Problems.routes";
+import { pageRoutes } from "@/routes/Page.routes";
+import ProblemHOC from "./ProblemHOC";
 
 const Dashboard = () => {
   return (
@@ -35,14 +38,22 @@ const Dashboard = () => {
                   {labRoutes.map((route) => (
                     <Route
                       key={route.path}
+                      path={"/lab" + route.path}
+                      element={<HOC item={route} />}
+                    />
+                  ))}
+                  {problemRoutes.map((route) => (
+                    <Route
+                      key={route.path}
+                      path={"/Logic-&-Reasoning" + route.path}
+                      element={<ProblemHOC item={route} />}
+                    />
+                  ))}
+                  {pageRoutes.map((route) => (
+                    <Route
+                      key={route.path}
                       path={route.path}
-                      element={
-                        route?.hocLayout == true ? (
-                          <HOC item={route} />
-                        ) : (
-                          route.element
-                        )
-                      }
+                      element={route.element}
                     />
                   ))}
                 </Routes>

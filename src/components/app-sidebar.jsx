@@ -38,6 +38,7 @@ import {
 import animateduser from "../assets/system-regular-8-account-hover-pinch.gif";
 import { labRoutes } from "@/routes/Lab.routes";
 import { NavLink, useLocation } from "react-router-dom";
+import { problemRoutes } from "@/routes/Problems.routes";
 
 const data = {
   user: {
@@ -191,27 +192,52 @@ export function AppSidebar({ ...props }) {
           <SidebarMenu>
             <SidebarMenuItem key={"React Problems"}>
               <SidebarMenuButton asChild>
-                <NavLink to={"#"}>React Problems</NavLink>
+                <NavLink to={"#"}>React Problems Labs</NavLink>
               </SidebarMenuButton>
               <SidebarMenuSub>
                 {labRoutes.map((item) => {
-                  if (item.showInMenu === true) {
-                    return (
-                      <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton
-                          asChild
-                          isActive={item.path === location.pathname}
-                          onClick={() => {
-                            console.log("clicked");
-                          }}
-                        >
-                          <NavLink to={item.path}>{item.title}</NavLink>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
-                    );
-                  } else {
-                    return null;
-                  }
+                  return (
+                    <SidebarMenuSubItem key={item.title}>
+                      <SidebarMenuSubButton
+                        asChild
+                        isActive={
+                          item.path === location.pathname.replace("/lab", "")
+                        }
+                        onClick={() => {
+                          console.log("clicked");
+                        }}
+                      >
+                        <NavLink to={"/lab" + item.path}>{item.title}</NavLink>
+                      </SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                  );
+                })}
+              </SidebarMenuSub>
+            </SidebarMenuItem>
+            <SidebarMenuItem key={"Logic & Reasoning"}>
+              <SidebarMenuButton asChild>
+                <NavLink to={"#"}>Logic & Reasoning</NavLink>
+              </SidebarMenuButton>
+              <SidebarMenuSub>
+                {problemRoutes.map((item) => {
+                  return (
+                    <SidebarMenuSubItem key={item.title}>
+                      <SidebarMenuSubButton
+                        asChild
+                        isActive={
+                          item.path ===
+                          location.pathname.replace("/Logic-&-Reasoning", "")
+                        }
+                        onClick={() => {
+                          console.log("clicked");
+                        }}
+                      >
+                        <NavLink to={"/Logic-&-Reasoning" + item.path}>
+                          {item.title}
+                        </NavLink>
+                      </SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                  );
                 })}
               </SidebarMenuSub>
             </SidebarMenuItem>

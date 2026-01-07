@@ -27,7 +27,7 @@ const UserItem = React.memo(({ user }) => (
   <Item variant="outline">
     <ItemMedia>
       <Avatar className="size-10">
-        <AvatarImage src={user.profileImageUrl} />
+        <AvatarImage src={user.profileImageUrl} className="rounded-full" />
         <AvatarFallback>{user.initials}</AvatarFallback>
       </Avatar>
     </ItemMedia>
