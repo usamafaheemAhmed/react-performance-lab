@@ -3,6 +3,9 @@ import { lazy } from "react";
 const MinimumBottleChange = lazy(() =>
   import("@/components/Problems/MinimumBottleChange/MinimumBottleChange")
 );
+const CardValueMinimization = lazy(() =>
+  import("@/components/Problems/CardValueMinimization/CardValueMinimization")
+);
 
 export const problemRoutes = [
   {
@@ -61,6 +64,107 @@ Your task is to determine:
 <p>
 Because <strong>7 + 7 = 14</strong> and no solution uses fewer bottles.
 </p>
+`,
+    codeSnippet: ``,
+  },
+  {
+    path: "/card-value-minimization",
+    title: "Card Value Minimization",
+    showInMenu: true,
+    hocProblemLayout: true,
+    component: <CardValueMinimization />,
+    ProblemQuestion: `<h2>🃏 Card Value Minimization Problem</h2>
+
+<p>
+You have recently joined a company. Your manager takes your team out for a team building activity.
+There are <strong>N</strong> people in your team excluding you and your manager.
+</p>
+
+<p>
+Each person is given a card containing an integer value and they are seated in a row from
+position <strong>0</strong> to <strong>N - 1</strong>.
+</p>
+
+<p>
+You are allowed to erase the integers on the cards and write new integers, with the following rule:
+</p>
+
+<ul>
+  <li>If <strong>A[i] &lt; A[i + 1]</strong>, then the new value at position <strong>i</strong> must still be less than the value at position <strong>i + 1</strong>.</li>
+  <li>If <strong>A[i] &gt; A[i + 1]</strong>, then the new value at position <strong>i</strong> must still be greater than the value at position <strong>i + 1</strong>.</li>
+  <li>If <strong>A[i] = A[i + 1]</strong>, then the new values must also be equal.</li>
+</ul>
+
+<p>
+Your goal is to create a new array such that:
+</p>
+
+<ul>
+  <li>All values are <strong>non-negative integers</strong>.</li>
+  <li>The values are as <strong>small as possible</strong>.</li>
+  <li>All original relationships between adjacent values are preserved.</li>
+</ul>
+
+<p>
+After creating this minimized array, return the <strong>maximum value</strong> present in it.
+</p>
+
+<h3>Function Description</h3>
+
+<p>
+Complete the function <strong>max_value</strong> which accepts the following parameters:
+</p>
+
+<ul>
+  <li><strong>values_on_cards[]</strong>: an array of integers</li>
+  <li><strong>no_of_people</strong>: number of people (size of the array)</li>
+</ul>
+
+<p>
+The function should return a single integer representing the maximum value of the minimized array.
+</p>
+
+<h3>Example</h3>
+
+<p><strong>Input:</strong></p>
+<pre>
+values_on_cards = [4, 2, 6]
+no_of_people = 3
+</pre>
+
+<p><strong>Output:</strong></p>
+<pre>
+1
+</pre>
+
+<p>
+<strong>Explanation:</strong><br />
+The original relationships are preserved as:
+</p>
+
+<ul>
+  <li>4 &gt; 2</li>
+  <li>2 &lt; 6</li>
+</ul>
+
+<p>
+The minimized non-negative array becomes:
+</p>
+
+<pre>
+[1, 0, 1]
+</pre>
+
+<p>
+The maximum value in this array is <strong>1</strong>.
+</p>
+
+<h3>Constraints</h3>
+
+<ul>
+  <li>1 ≤ N ≤ 10<sup>5</sup></li>
+  <li>−10<sup>9</sup> ≤ values_on_cards[i] ≤ 10<sup>9</sup></li>
+</ul>
 `,
     codeSnippet: ``,
   },

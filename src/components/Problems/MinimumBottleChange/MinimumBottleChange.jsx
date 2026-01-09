@@ -75,7 +75,7 @@ const MinimumBottleChange = () => {
           <CardTitle>🧃 Minimum Bottle Change Problem</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p>
+          <p className="text-sm text-muted-foreground pb-0 mb-0">
             Enter a number <strong>N</strong> to find the minimum number of
             bottles needed and which bottles to use.
           </p>
